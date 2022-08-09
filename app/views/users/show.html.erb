@@ -1,0 +1,40 @@
+<section>
+    <h1><%= @user.name %></h1>
+    <h1 class="mainevent" style="font-size:20px;"><%= mail_to(@user.email) %></h1> <br>
+</section>
+<div style="margin-left:20px;">
+<% if current_user == @user%>
+<%= link_to "Edit Account",edit_user_path(@user), class: "button"%>
+<% end %>
+<% if current_user.admin? %>
+<%= link_to "Delete Account", user_path(@user), data:{turbo_confirm: "Are you sure?", turbo_method: :delete} ,class:"button" %>
+<% end %>
+</div><br><br>
+<div>
+    <b style="margin-left:18px;font-size:25px;font-style:italic;"><%= current_user.name %> booking for events</b><br><br>
+    <table>
+    <tr>
+    <th>Events name</th>
+    <th>Events location</th>
+    <th>Events date time</th>
+    <th>registration time</th>
+    
+    </tr>
+    <% @registrations.each do |r| %>
+      <tr>
+        <td><%=link_to r.event.name,r.event %></td>
+        <td><%= r.event.location %></td>
+        <td><%= r.event.starts_at.strftime("%B %d at %I:%m %p") %></td>
+        <td><%= time_ago_in_words(r.created_at) %> Ago</td>
+      </tr> 
+    <% end %> 
+</table>
+
+</div>
+
+<br><% if @liked_events.present? %>
+            <b>Liked Events by <%= @user.name %></b><br>
+            <% @liked_events.each do |user| %>
+                <%= link_to user.name, user %>
+            <% end %>
+        <% end %>

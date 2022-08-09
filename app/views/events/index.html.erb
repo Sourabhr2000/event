@@ -1,0 +1,37 @@
+<%# <%= stylesheet_link_tag "main" %>
+<%# <h1 class="tag12">hello</h1> %>
+
+<% @events.each do |event| %>
+    <div>
+        <%= image_tag event.image_field,class:"image" %>
+    </div>
+    <section class="event">
+
+        <div class="summary">
+        
+            <h2><%= link_to event.name,event_path(event),class:"mainevent"%></h2>  
+
+            <%# here we can also use only event as a helper at the place of 
+            event_path(event) %>
+
+
+            <span><%= day_and_time(event) %> in <%= event.location %></span>
+
+            <span class="price"><%= price(event) %></span>
+
+            <p>
+                <%= truncate(event.description,length:30) %>
+            </p>
+            
+        </div>
+
+    </section><hr style="width:95%">
+    
+ <% end %>
+
+
+ <section>
+    <% if current_user && current_user.admin? %>
+        <b><%= link_to "Add New Event",new_event_path,class:"button1" %></b>
+    <% end %>
+</section>

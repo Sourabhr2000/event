@@ -1,0 +1,88 @@
+header{
+    background-color: aquamarine;
+    margin-bottom: 10px;
+}
+.price{
+    background-color: rgb(201 169 169 / 85%);;
+    padding: 0.5%;
+    /* margin: 0px 0px 80px 700px; */
+    float: right;
+    margin-right: 200px;
+    height: 20px;
+    width: 50px;
+}
+h1{
+    padding-left: 20px;
+}
+.event{
+    padding-left: 40px;
+}
+.dec{
+    text-align:center;
+    text-decoration:none;
+    font-size: 20px;
+}
+li{
+    display:inline-block;
+    margin: 20px;
+    }
+/* .nav{
+    float:right;
+    margin-right: 20px;
+    margin-top: 32px;    
+} */
+.button{
+    text-decoration: none;
+    background-color: darkgray;
+    padding: 5px;
+    color: black;
+}
+.button1{
+    text-decoration: none;
+    background-color: darkgray;
+    padding: 5px;
+    color: black;
+    margin-left:45%;
+    font-size: 20px;
+    
+}
+.mainevent{
+    font-style: italic;
+    color: firebrick;
+    text-decoration: none;
+    font-size: 30px;
+}
+.image{
+    height: 50px;
+    width: 70px;
+}
+.errors{
+    background-color: rgb(253, 255, 127);
+    width: 300px;
+}
+.flash{
+    text-align: center;
+    height: 30px;
+    background-color: rgb(220, 235, 229);
+    opacity: 60%;
+    padding-top: 10px;
+
+}
+.profilelogo{
+    background-color: rgb(196, 209, 209);
+    border-radius: 40px;
+    padding: 15px;
+    font-style: italic;
+    text-decoration: none;
+    font-size: large;
+    color: brown;
+}
+th{
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+}
+table{
+    margin-left: 20px;
+}

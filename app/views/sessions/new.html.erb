@@ -1,0 +1,13 @@
+<h1 style="text-align:center;">Sign In </h1>
+<%= form_with(url: session_path, local: true) do |f| %>
+    <div style="text-align:center;">
+    <%= f.label :email_or_username %>
+    <%= f.text_field :email , autofocus: true %><br><br>
+
+    <%= f.label :password %>
+    <%= f.password_field  :password %><br><br>
+
+    <%= f.submit "LOGIN" %>
+    </div>
+
+<% end %>

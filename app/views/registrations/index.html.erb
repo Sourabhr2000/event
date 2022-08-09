@@ -1,0 +1,13 @@
+<h1> <%= link_to @event.name, @event , class:"mainevent"%> - Registrations 
+    <% if !(@event.registrations.where(user_id:current_user.id).count > 0)%>
+        <%= register_or_sold_out(@event) %></h1>
+    <% else %>
+    <% end %>
+    <ul>
+        <% @registrations.each do |r| %>
+        <% if r.user.name == current_user.name %>
+            <b style="font-style: italic;"><%=link_to r.user.name, r.user %> &bull;  <%= r.how_heard %></b><br><br>
+            dear <b style="font-style: italic;"><%=link_to r.user.name, r.user %> you have alredy registered for this event with reference </b> <%=r.how_heard %>
+        <% end %> 
+        <% end %>
+    </ul>

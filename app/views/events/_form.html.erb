@@ -1,0 +1,45 @@
+<%= form_with(model: event, local: true) do |f| %>
+    
+    <%# <%= render "shared/errors",object: event %> 
+    <% if event.errors.any? %>
+        <section class="errors">
+            <h1>sorry..! your form could not have been saved..</h1>
+                <ul>
+                    <% event.errors.full_messages.each do |k| %>
+                       <span style="color:red;"><%= k %></span><br>
+                    <% end %>
+                </ul>
+        </section>
+    <% end %>
+
+
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %><br><br>
+
+    <%= f.label :price %>
+    <%= f.number_field :price %><br><br>
+
+    <%= f.label :starts_at %>
+    <%= f.datetime_select :starts_at,{ampm: true},{class: "datetime"} %><br><br>
+
+    <%= f.label :location %>
+    <%= f.text_field :location %><br><br>
+
+    <%= f.label :capacity %>
+    <%= f.text_field :capacity %><br><br>
+
+    <%= f.label :image_field %>
+    <%= f.text_field :image_field %><br><br>
+
+    <%= f.label :description %><br>
+    <%= f.text_area :description, rows:5 %><br><br>
+    <div class="checkboxes">
+        <%= f.collection_check_boxes(:category_ids,Category.all,:id,:name)%>
+    </div>
+
+
+    <%= f.submit %>
+<% end %>
+
+    
+

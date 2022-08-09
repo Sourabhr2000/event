@@ -1,0 +1,33 @@
+<header>
+      <nav>  
+        <ul class="nav">
+          <li style="font-size:20px;,float:left;"><b>EVENT</b></li>
+          
+            <%# link with href tag this is html property %>
+            <%# <a href="/events">All Events</a> %>
+            <%# we can give also url or router path here %>
+          <% if @a!=1 %>
+            <%= @a %>
+            <li><%= link_to "All Events",events_path, class:"button"%></li>
+          <% end %>
+
+          <li><%= link_to "upcoming events",filter_event_path(:upcoming), class:"button"%></li>
+          <li><%= link_to "past events",filter_event_path(:past), class:"button"%></li>
+          <li><%= link_to "free",filter_event_path(:free), class:"button"%></li>
+          <li><%= link_to "recent",filter_event_path(:recent), class:"button"%></li>
+
+          <% if !current_user %>
+            <li style="float:right;"><%= link_to "Sign Up", new_user_path , class:"button" %></li>
+            <li style="float:right;"><%= link_to "Sign In", new_session_path , class:"button" %></li>
+          <% end %>
+          <% if current_user%>
+            <li style="float:right;"><%= link_to current_user.name, current_user,class:"profilelogo" %></li>
+            <li style="float:right;"><%= link_to "log out", session_path, data:{turbo_confirm: "Are you sure?", turbo_method: :delete} ,class:"button" %></li>
+           
+            
+          <% end %>
+    
+        </ul>
+    <%# <%= image_tag("eventlogo")%>
+      </nav>
+</header><br>

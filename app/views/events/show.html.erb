@@ -1,0 +1,59 @@
+
+    <section class="event">
+        <div>
+            <%= image_tag @event.image_field,class:"image" %>
+        </div>
+        <div class="summary">
+        
+            <h2 class="mainevent"><%= @event.name %></h2> 
+
+            <h4><%= pluralize(@event.capacity, "spots") %> &bull; <%= price(@event) %></h4>
+
+            <span><%= day_and_time(@event) %> in <%= @event.location %></span>
+
+            <p>
+                <%= @event.description %>
+            </p>
+
+        </div>
+        
+
+
+        <% if current_user && current_user.admin? %>
+            <%= link_to "Edit" , edit_event_path(@event),class:"button" %>
+
+            <%= link_to "Delete", event_path(@event), data:{turbo_confirm: "Are you sure?", turbo_method: :delete} ,class:"button" %>
+        <% end %>
+        <%= link_to "#{@event.name} registrations  " , event_registrations_path(@event),class:"button" %><br><br>
+        
+
+        
+
+        <% if current_user %>
+            <% if @like %>
+                <%= link_to "* Unlike",event_like_path(@event, @like),data: {turbo_method: :delete},class:"button" %>
+            <% else %>
+                <%= button_to "* Like",event_likes_path(@event) ,class:"button"%>
+        
+            <% end %>
+        <% end %>
+
+
+        <br><br><% if @likers.present? %>
+            <b>This Events liked by <%= @likers.size %> user</b><br>
+            <% @likers.each do |user| %>
+                <%= link_to user.name, user %>
+            <% end %>
+        <% end %>
+        
+
+        <br><br>
+        <b>categories </b><br>
+        <% if @categories.present? %>
+            <% @categories.each do |category| %>
+                <%= category.name %>
+            <% end %>
+        <% end %>
+
+
+    </section><hr style="width:95%">

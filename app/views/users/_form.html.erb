@@ -1,0 +1,33 @@
+<%= form_with(model: user, local: true) do |f| %>
+    
+    <%# <%= render "shared/errors",object: event %> 
+    <% if user.errors.any? %>
+        <section class="errors">
+            <h1>sorry..! your form could not have been saved..</h1>
+                <ul>
+                    <% user.errors.full_messages.each do |k| %>
+                       <span style="color:red;"><%= k %></span><br>
+                    <% end %>
+                </ul>
+        </section>
+    <% end %>
+
+
+    <%= f.label :name %><br>
+    <%= f.text_field :name, autofocus: true %><br><br>
+
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br><br>
+
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br><br>
+
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %><br><br>
+
+
+    <%= f.submit %>
+
+    
+
+<% end %>
