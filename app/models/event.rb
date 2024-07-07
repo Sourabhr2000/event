@@ -16,6 +16,10 @@ class Event < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     validates :location, presence: true
 
+
+    # add comment to test the 
+    
+
     validates :price, numericality: { greater_than_or_equal_to: 0 }
     validates :capacity, numericality: { greater_than: 0, only_integer: true}
     validates :description, length: { minimum: 20,message: "your description length must be greater than 20" }
